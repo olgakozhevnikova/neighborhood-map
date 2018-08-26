@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import MapContainer from './Map'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      'map': '',
+      'infoWindow': '',
+      'marker': '',
       'places': [
         {
           'name': 'TRINITY coworking space',
@@ -75,13 +79,19 @@ class App extends Component {
           'address': '#5, 14th Main Road, 15th Cross Rd, HSR Layout, Bengaluru, Karnataka 560102',
           'phone': '077601 51525'
         }
-      ] 
+      ]
     }
   }
+
   render() {
     return (
       <div className="App">
-        
+        <div className="sidebar">
+          This is a sidebar
+        </div>
+        <div className="main-part" id="map">
+          <MapContainer/>
+        </div>
       </div>
     );
   }
