@@ -8,7 +8,9 @@ class Sidebar extends Component {
     this.state = {
 			query: '',
       locations: ''
-    }
+		}
+
+		this.updateQuery = this.updateQuery.bind(this)
 	}
 	
 	componentWillMount() {
@@ -24,7 +26,10 @@ class Sidebar extends Component {
       // so we use those special characters as a string literal
     	// rather than these special regexp characters
       const match = new RegExp(escapeRegExp(query), 'i')
-			activeLocation = this.state.locations.filter((location) => match.test(location.name))
+			activeLocation = this.state.locations.filter((location) => {
+				match.test(location.name)
+				location.marker.setVisible(true);
+			})
 			this.setState({
 				locations: activeLocation,
 				query: query

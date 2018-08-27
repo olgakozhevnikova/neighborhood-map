@@ -70,6 +70,7 @@ class App extends Component {
       });
 
       location.marker = marker;
+      console.log(location.marker)
       location.display = true;
       locations.push(location);
     });
@@ -105,8 +106,8 @@ class App extends Component {
     var self = this;
 
     // Add the api keys for foursquare
-    var clientId = "Q5MK2XFDK3FVTDQLOQKSFTKS1CI1XEWZSO2TIPP5DU2PWICK";
-    var clientSecret = "MQ3CZLR5KY1F04FUAX5YWXOLYRRJSYFWCHZANZZ23M4WI05L";
+    var clientId = "1NMCBUQMUDH2E5KQKNN4X3IZKPC551LD0TQNN140AZTVCW4R";
+    var clientSecret = "KOKHBE0JAUITZYQPDJ4JS1OXTZT02CAOVDC0D04WNHWHIACI";
 
     // Build the api endpoint
     var url =
@@ -120,14 +121,14 @@ class App extends Component {
       marker.getPosition().lng() +
       "&limit=1";
     fetch(url)
-      .then(function(response) {
-        if (response.status !== 200) {
-          self.state.infowindow.setContent("Sorry data can't be loaded");
+      .then((res) => {
+        if (res.status !== 200) {
+          self.state.infowindow.setContent('The data is not available.');
           return;
         }
 
         // Get the text in the response
-        response.json().then(function(data) {
+        res.json().then(function(data) {
           console.log(data);
 
           var location_data = data.response.venues[0];
