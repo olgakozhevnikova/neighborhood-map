@@ -1,92 +1,66 @@
 [
 	{
-		"name": "TRINITY coworking space",
-		"address": "26/A, 1st floor, Patel Ram Reddy Rd",
-		"phone": "078998 29580",
+		"name": "Yogisthan",
+		"address": "89, 11th Cross Road, 60 Feet Road, Stage, Near BDA Complex, Indiranagar, Stage 1, Bengaluru, Karnataka 560038",
 		"location": {
-			"lat": "12.95628",
-			"lng": "77.636616"
+			"lat": "12.981103",
+			"lng": "77.638372"
 		}
 	},
 	{
-		"name": "Bangalore Coworking Hub",
-		"address": "A, Behind, 2124, Leela Palace Rd, HAL 3rd Stage, Kodihalli, Bengaluru, Karnataka 560008",
-		"phone": "099024 32565",
+		"name": "Lavonne",
+		"address": "#263, 3rd Cross Rd, 2nd Stage, 2nd Phase, Domlur, Bengaluru, Karnataka 560071",
 		"location": {
-			"lat": "12.96127",
-			"lng": "77.647449"
+			"lat": "12.966579",
+			"lng": "77.636711"
 		}
 	},
 	{
-		"name": "Bhive Workspace Indiranagar",
-		"address": "No 25, 12th B Main Road, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038",
-		"phone": "080888 22364",
+		"name": "The Ants Cafe",
+		"address": "2286, 1st Cross, 14 A Main, Hal 2nd Stage, Indira Nagar, Bengaluru, Karnataka 560008",
 		"location": {
-			"lat": "12.96903",
-			"lng": "77.636409"
+			"lat": "12.967181",
+			"lng": "77.642205"
 		}
 	},
 	{
-		"name": "Bhive Workspace Koramangala",
-		"address": "No. 269, Behind Station, 18th D Main Road, 6th Block, Koramangala, Bengaluru, Karnataka 560095",
-		"phone": "080888 22364",
+		"name": "Sri Udupi Park",
+		"address": "100 Feet Rd, Stage 3, Indiranagar, Bengaluru, Karnataka 560038",
 		"location": {
-			"lat": "12.940334",
-			"lng": "77.621846"
+			"lat": "12.973616",
+			"lng": "77.6409"
 		}
 	},
 	{
-		"name": "InstaOffice",
-		"address": "1st Floor, Citadel Plaza, Indiranagar Double Road, Dopanhalli, Indiranagar, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560008",
-		"phone": "099585 63555",
+		"name": "Creme & Crust",
+		"address": "3777, Domlur Service Road, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038",
 		"location": {
-			"lat": "12.969708",
-			"lng": "77.63611"
+			"lat": "12.966928",
+			"lng": "77.637232"
 		}
 	},
 	{
-		"name": "Beginest",
-		"address": "783, 1st Cross Rd, 1st Block, HAL 2nd Stage, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560008",
-		"phone": "091080 29762",
+		"name": "Big Pitcher",
+		"address": "L R Arcade, HAL Old Airport Rd, HAL 2nd Stage, Ward 88, Kodihalli, Bengaluru, Karnataka 560008",
 		"location": {
-			"lat": "12.969328",
-			"lng": "77.640778"
+			"lat": "12.960211",
+			"lng": "77.646911"
 		}
 	},
 	{
-		"name": "Common Desk",
-		"address": "271, 1st Floor,14th Cross Rd, Eshwara Layout, Indiranagar, Bengaluru, Karnataka 560038",
-		"phone": "099868 88639",
+		"name": "380 Down",
+		"address": "No. 3, 80 Feet Rd, HAL 3rd Stage, Indiranagar, Bengaluru, Karnataka 560075",
 		"location": {
-			"lat": "12.976683",
-			"lng": "77.635627"
+			"lat": "12.975197",
+			"lng": "77.647081"
 		}
 	},
 	{
-		"name": "TechHub Bangalore",
-		"address": "3rd Floor, Salarpuria Business Center, 4th B Cross, 5th Block, Industrial Layout, Bengaluru, Karnataka 560095",
-		"phone": "080507 00113",
+		"name": "The Warehouse",
+		"address": "3, 80 Feet Road, Indira Nagar 1st Stage, H Colony, Indiranagar, HAL 3rd Stage, New Tippasandra, Bengaluru, Karnataka 560075",
 		"location": {
-			"lat": "12.933656",
-			"lng": "77.614492"
-		}
-	},
-	{
-		"name": "Commune Coworks",
-		"address": "139, First Cross Road, V Block, A Cross Road, Koramangala, Bengaluru, Karnataka 560095",
-		"phone": "088805 00175",
-		"location": {
-			"lat": "12.933794",
-			"lng": "77.620955"
-		}
-	},
-	{
-		"name": "CoWorkIndia",
-		"address": "#5, 14th Main Road, 15th Cross Rd, HSR Layout, Bengaluru, Karnataka 560102",
-		"phone": "077601 51525",
-		"location": {
-			"lat": "12.914581",
-			"lng": "77.638584"
+			"lat": "12.975188",
+			"lng": "77.64712"
 		}
 	}
 ]

@@ -28,9 +28,9 @@ class App extends Component {
 
     var map = new window.google.maps.Map(document.getElementById('map'), {
       center: {
-        lat: 12.972442, lng: 77.580643
+        lat: 12.971892, lng: 77.641154
       },
-      zoom: 13
+      zoom: 15
     })
 
     var InfoWindow = new window.google.maps.InfoWindow({})
@@ -45,7 +45,7 @@ class App extends Component {
     })
 
     window.google.maps.event.addDomListener(window, "resize", function() {
-      var center = map.getCenter();
+      let center = map.getCenter();
       window.google.maps.event.trigger(map, "resize");
       self.state.map.setCenter(center);
     })
@@ -54,9 +54,10 @@ class App extends Component {
       self.closeInfoWindow();
     })
 
-    var locations = [];
+    let locations = [];
     this.state.locations.forEach((location) => {
-      var marker = new window.google.maps.Marker({
+      console.log(location.location)
+      let marker = new window.google.maps.Marker({
         position: new window.google.maps.LatLng(
           location.location.lat,
           location.location.lng
@@ -64,13 +65,13 @@ class App extends Component {
         animation: window.google.maps.Animation.DROP,
         map: map
       });
+      console.log(marker)
 
       marker.addListener("click", () => {
         self.openInfoWindow(marker);
       });
 
       location.marker = marker;
-      console.log(location.marker)
       location.display = true;
       locations.push(location);
     });
@@ -97,7 +98,7 @@ class App extends Component {
       this.state.prevmarker.setAnimation(null);
     }
     this.setState({
-      prevmarker: ""
+      prevmarker: ''
     });
     this.state.infowindow.close();
   }
@@ -128,29 +129,23 @@ class App extends Component {
         }
 
         // Get the text in the response
-        res.json().then(function(data) {
-          console.log(data);
+        res.json().then((res) => {
+          let data = res.response.venues[0]
+          console.log(data)
+          let place = `<h3>${data.name}</h3>`
+          let street = `<p>${data.location.formattedAddress[0]}</p>`
+          let contact = ''
 
-          var location_data = data.response.venues[0];
-          var place = `<h3>${location_data.name}</h3>`;
-          var street = `<p>${location_data.location.formattedAddress[0]}</p>`;
-          var contact = "";
-          if (location_data.contact.phone)
-            contact = `<p><small>${location_data.contact.phone}</small></p>`;
-          var checkinsCount =
-            "<b>Number of CheckIn: </b>" +
-            location_data.stats.checkinsCount +
-            "<br>";
-          var readMore =
-            '<a href="https://foursquare.com/v/' +
-            location_data.id +
-            '" target="_blank">Read More on <b>Foursquare Website</b></a>';
+          if (data.contact.phone)
+            contact = `<p><small>${data.contact.phone}</small></p>`
+
           self.state.infowindow.setContent(
-            place + street + contact + checkinsCount + readMore
-          );
-        });
+            place + street + contact
+          )
+        })
       })
       .catch(function(err) {
+        console.log(err)
         self.state.infowindow.setContent("Sorry data can't be loaded");
       });
   }
@@ -158,11 +153,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav id="list-toggle" className="toggle" onClick={this.toggleList}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"></path>
-          </svg>
-        </nav>
         <div className="sidebar">
           <Sidebar 
             locations={this.state.locations}
