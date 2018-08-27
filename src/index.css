@@ -5,6 +5,10 @@ html, body {
   padding: 0;
 }
 
+.App {
+  display: flex;
+}
+
 /* Styling sidebar */
 .sidebar {
   height: 100vh;
@@ -25,7 +29,7 @@ html, body {
 
 .search-input {
   height: 100%;
-  width: 68;
+  width: 68%;
 }
 
 .filter-btn {
@@ -33,6 +37,7 @@ html, body {
   background: #0b80ff;
   width: 30%;
   height: 37px;
+  border-style: none;
 }
 
 .list-wrapper {
@@ -48,4 +53,14 @@ html, body {
   cursor: pointer;
   margin-bottom: 1rem;
   font-size: 12px;
+}
+
+/* Styling map */
+
+.map {
+  width: 70%;
+}
+
+Map {
+  width: 70%;
 }
