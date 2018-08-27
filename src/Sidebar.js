@@ -18,36 +18,19 @@ class Sidebar extends Component {
 	}
 
 	updateQuery = (query) => {
-		console.log(this.state.locations)
-		let activeLocation
-		if (query) {
-      // 'i' says to ignore case
-      // escapeRegExp says: if there are any special characters (backslash, etc) inside the query,
-      // then go ahead and escape them,
-      // so we use those special characters as a string literal
-    	// rather than these special regexp characters
-      const match = new RegExp(escapeRegExp(query), 'i')
-			activeLocation = this.state.locations.filter((location) => {
-				location.marker.setVisible(true)
-				return match.test(location.name)
-			})
-			console.log(activeLocation)
-			this.setState({
-				locations: activeLocation,
-				query: query
-			})
-			console.log(this.state.locations)
-    } else {
-			activeLocation = this.state.locations
-			this.setState({
-				locations: this.props.locations,
-				query: ''
-			})
-    }
-	}
-
-	clearQuery = () => {
-    this.setState({ query: '' })
+		var locations = []
+		this.props.locations.forEach((location) => {
+      if (location.name.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+        location.marker.setVisible(true)
+        locations.push(location)
+      } else {
+        location.marker.setVisible(false)
+      }
+		})
+		this.setState({
+      locations: locations,
+      query: query
+    })
 	}
 
 	render() {
