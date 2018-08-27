@@ -166,7 +166,7 @@ class App extends Component {
         </nav>
         <div className="sidebar">
           <Sidebar 
-            alllocations={this.state.alllocations}
+            locations={this.state.locations}
             openInfoWindow={this.openInfoWindow}
             closeInfoWindow={this.closeInfoWindow}
           />
