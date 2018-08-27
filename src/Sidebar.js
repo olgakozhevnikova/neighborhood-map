@@ -3,19 +3,19 @@ import escapeRegExp from 'escape-string-regexp'
 import Location from './Location'
 
 class Sidebar extends Component {
-	constructor(props) {
-    super(props);
-    this.state = {
-			query: '',
-      locations: ''
-    }
+	// constructor(props) {
+  //   super(props);
+  //   this.state = {
+	// 		query: '',
+  //     locations: ''
+  //   }
 
-    // this.filterLocations = this.filterLocations.bind(this);
-	}
+  //   // this.filterLocations = this.filterLocations.bind(this);
+	// }
 	
-	componentWillMount() {
-		this.setState({ locations: this.props.locations })
-	}
+	// componentWillMount() {
+	// 	this.setState({ locations: this.props.locations })
+	// }
 
 	// updateQuery = (query) => {
 	// 	// if (query) {
@@ -60,6 +60,7 @@ class Sidebar extends Component {
 	}
 
 	render() {
+		const {locations} = this.props
 		return (
 			<div className="sidebar-content">
 				<div className="search-place-wrapper">
@@ -67,7 +68,7 @@ class Sidebar extends Component {
 						className="search-input"
 						type="text"
 						placeholder="Search by name"
-						value={this.state.query}
+						
 						onChange={event => this.updateQuery(event.target.value)}
 					/>
 					<button className="filter-btn">
@@ -75,12 +76,13 @@ class Sidebar extends Component {
 					</button>
 				</div>
 				<div className="list-wrapper">
-				<ul>
-					{this.state.locations.map(location => {
-						<Location 
-							location={location}/>
-					})}
-				</ul>
+					<ul>
+						{locations.map((location, index) => (
+							<Location 
+								key={index}
+								location={location}/>
+						))}
+					</ul>
 				</div>
 			</div>
 		)
