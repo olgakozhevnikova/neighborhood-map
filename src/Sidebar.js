@@ -1,37 +1,45 @@
 import React, { Component } from 'react'
-import escapeRegExp from 'escape-string-regexp'
 
 export class Sidebar extends Component {
-	state = {
-		query: ''
-	}
+	constructor(props) {
+    super(props);
+    this.state = {
+			query: '',
+      locations: ''
+    }
+
+    // this.filterLocations = this.filterLocations.bind(this);
+  }
 
 	updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+		var locations = [];
+    this.props.alllocations.forEach(function(location) {
+      if (location.longname.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+        location.marker.setVisible(true);
+        locations.push(location);
+      } else {
+        location.marker.setVisible(false);
+      }
+    });
+
+    this.setState({
+      locations: locations,
+      query: query
+    });
 	}
 	
 	clearQuery = () => {
     this.setState({ query: '' })
+	}
+	
+	componentWillMount() {
+    this.setState({
+      locations: this.props.alllocations
+    });
   }
 
+
 	render() {
-		const { places } = this.props
-		const { query } = this.state
-
-		let showingPlaces
-
-    if (query) {
-      // 'i' says to ignore case
-      // escapeRegExp says: if there are any special characters (backslash, etc) inside the query,
-      // then go ahead and escape them,
-      // so we use those special characters as a string literal
-      // rather than these special regexp characters
-      const match = new RegExp(escapeRegExp(query), 'i')
-      showingPlaces = places.filter((place) => match.test(place.name))
-    } else {
-      showingPlaces = places
-    }
-
 		return (
 			<div className="sidebar-content">
 				<div className="search-place-wrapper">
@@ -47,13 +55,7 @@ export class Sidebar extends Component {
 					</button>
 				</div>
 				<div className="list-wrapper">
-					<ul>
-						{showingPlaces.map(place => (
-							<li className="list-item" key={place.name}>
-								{place.name}
-							</li>
-						))}
-					</ul>
+					{/*   */}
 				</div>
 			</div>
 		)
