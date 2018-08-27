@@ -8,12 +8,14 @@ class App extends Component {
       locations: require('./locations.json'),
       map: '',
       infoWindow: '',
-      marker: ''
+      marker: '',
+      visible: true
     }
 
     this.initMap = this.initMap.bind(this)
     this.openInfoWindow = this.openInfoWindow.bind(this)
     this.closeInfoWindow = this.closeInfoWindow.bind(this)
+    this.toggleList = this.toggleList.bind(this);
   }
 
   componentDidMount() {
@@ -147,17 +149,27 @@ class App extends Component {
       });
   }
 
+  toggleList() {
+    this.setState({visible: !this.state.visible})
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="sidebar">
-          <Sidebar 
-            locations={this.state.locations}
-            openInfoWindow={this.openInfoWindow}
-            closeInfoWindow={this.closeInfoWindow}
-          />
+        <div className="navigation">
+          <span className="header">Cafes and bars in Bangalore</span>
+          <button className="list-btn" onClick={this.toggleList}>Show</button>
         </div>
-        <div className="map" id="map"></div>
+        <div className="content">
+          {this.state.visible && <div className="sidebar">
+            <Sidebar 
+              locations={this.state.locations}
+              openInfoWindow={this.openInfoWindow}
+              closeInfoWindow={this.closeInfoWindow}
+            />
+          </div>}
+          <div className="map" id="map"></div>
+        </div>
       </div>
     );
   }
