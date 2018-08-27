@@ -3,64 +3,46 @@ import escapeRegExp from 'escape-string-regexp'
 import Location from './Location'
 
 class Sidebar extends Component {
-	// constructor(props) {
-  //   super(props);
-  //   this.state = {
-	// 		query: '',
-  //     locations: ''
-  //   }
-
-  //   // this.filterLocations = this.filterLocations.bind(this);
-	// }
+	constructor(props) {
+    super(props);
+    this.state = {
+			query: '',
+      locations: ''
+    }
+	}
 	
-	// componentWillMount() {
-	// 	this.setState({ locations: this.props.locations })
-	// }
+	componentWillMount() {
+		this.setState({ locations: this.props.locations })
+	}
 
-	// updateQuery = (query) => {
-	// 	// if (query) {
-  //   //   // 'i' says to ignore case
-  //   //   // escapeRegExp says: if there are any special characters (backslash, etc) inside the query,
-  //   //   // then go ahead and escape them,
-  //   //   // so we use those special characters as a string literal
-  //   //   // rather than these special regexp characters
-  //   //   const match = new RegExp(escapeRegExp(query), 'i')
-  //   //   showingContacts = contacts.filter((contact) => match.test(contact.name))
-  //   // } else {
-  //   //   showingContacts = contacts;
-  //   // }
-		
-	// 	var locations = [];
-  //   this.props.locations.forEach(function(location) {
-  //     if (location.longname.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
-  //       location.marker.setVisible(true);
-  //       locations.push(location);
-  //     } else {
-  //       location.marker.setVisible(false);
-  //     }
-  //   });
+	updateQuery = (query) => {
+		let activeLocation
+		if (query) {
+      // 'i' says to ignore case
+      // escapeRegExp says: if there are any special characters (backslash, etc) inside the query,
+      // then go ahead and escape them,
+      // so we use those special characters as a string literal
+    	// rather than these special regexp characters
+      const match = new RegExp(escapeRegExp(query), 'i')
+			activeLocation = this.state.locations.filter((location) => match.test(location.name))
+			this.setState({
+				locations: activeLocation,
+				query: query
+			})
+    } else {
+			activeLocation = this.state.locations
+			this.setState({
+				locations: this.props.locations,
+				query: ''
+			})
+    }
+	}
 
-	// 	if (query) {
-	// 		this.setState({
-	// 			locations: locations,
-	// 			query: query
-	// 		});
-	// 	}
-	// 	else {
-	// 		this.setState({
-	// 			locations: this.props.locations,
-	// 			query: ''
-	// 		});
-	// 	}
-    
-	// }
-	
 	clearQuery = () => {
     this.setState({ query: '' })
 	}
 
 	render() {
-		const {locations} = this.props
 		return (
 			<div className="sidebar-content">
 				<div className="search-place-wrapper">
@@ -77,7 +59,7 @@ class Sidebar extends Component {
 				</div>
 				<div className="list-wrapper">
 					<ul>
-						{locations.map((location, index) => (
+						{this.state.locations.map((location, index) => (
 							<Location 
 								key={index}
 								location={location}/>
