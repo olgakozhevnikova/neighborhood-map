@@ -56,7 +56,6 @@ class App extends Component {
 
     let locations = [];
     this.state.locations.forEach((location) => {
-      console.log(location.location)
       let marker = new window.google.maps.Marker({
         position: new window.google.maps.LatLng(
           location.location.lat,
@@ -64,20 +63,19 @@ class App extends Component {
         ),
         animation: window.google.maps.Animation.DROP,
         map: map
-      });
-      console.log(marker)
+      })
 
       marker.addListener("click", () => {
         self.openInfoWindow(marker);
-      });
+      })
 
       location.marker = marker;
       location.display = true;
       locations.push(location);
-    });
+    })
     this.setState({
       locations: locations
-    });
+    })
   }
 
   openInfoWindow(marker) {
@@ -145,7 +143,6 @@ class App extends Component {
         })
       })
       .catch(function(err) {
-        console.log(err)
         self.state.infowindow.setContent("Sorry data can't be loaded");
       });
   }

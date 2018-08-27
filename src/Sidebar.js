@@ -18,6 +18,7 @@ class Sidebar extends Component {
 	}
 
 	updateQuery = (query) => {
+		console.log(this.state.locations)
 		let activeLocation
 		if (query) {
       // 'i' says to ignore case
@@ -27,13 +28,15 @@ class Sidebar extends Component {
     	// rather than these special regexp characters
       const match = new RegExp(escapeRegExp(query), 'i')
 			activeLocation = this.state.locations.filter((location) => {
-				match.test(location.name)
-				location.marker.setVisible(true);
+				location.marker.setVisible(true)
+				return match.test(location.name)
 			})
+			console.log(activeLocation)
 			this.setState({
 				locations: activeLocation,
 				query: query
 			})
+			console.log(this.state.locations)
     } else {
 			activeLocation = this.state.locations
 			this.setState({
