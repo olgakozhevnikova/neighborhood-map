@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
 
 class Location extends Component {
-  state = {
-    showDetails: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      showDetails: false
+    }
+
+    this.handleKeyUp = this.keyUpHandler.bind(this)
   }
+  
   // make marker clicked
   open = () => {
     window.google.maps.event.trigger(this.props.location.marker,'click');
     this.setState({ showDetails: !this.state.showDetails })
+  }
+
+  keyUpHandler(el) {
+    if (el.keyCode === 13) {
+      this.setState({ showDetails: !this.state.showDetails })
+    }
+    window.google.maps.event.trigger(this.props.location.marker,'click');
   }
 
   render() {
@@ -15,7 +28,8 @@ class Location extends Component {
 
     return (
       <li className="list-item"
-          onClick={() => this.open(location)}
+          onClick={() => this.open}
+          onKeyUp={this.handleKeyUp}
           tabindex="0">
         {location.name}
         {this.state.showDetails && <div>
