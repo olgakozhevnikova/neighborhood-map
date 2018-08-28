@@ -9,12 +9,6 @@ class Location extends Component {
 
     this.handleKeyUp = this.keyUpHandler.bind(this)
   }
-  
-  // make marker clicked
-  open = () => {
-    window.google.maps.event.trigger(this.props.location.marker,'click');
-    this.setState({ showDetails: !this.state.showDetails })
-  }
 
   keyUpHandler(el) {
     if (el.keyCode === 13) {
