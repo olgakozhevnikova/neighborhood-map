@@ -18,7 +18,12 @@ class App extends Component {
     this.toggleList = this.toggleList.bind(this);
   }
 
+  gm_authFailure() {
+    window.alert("Google Maps error!")
+  }
+
   componentDidMount() {
+    window.gm_authFailure = this.gm_authFailure;
     window.initMap = this.initMap
     loadMapJS(
       'https://maps.googleapis.com/maps/api/js?key=AIzaSyBSBdeHrWWU7GEbOF54AGQZt81GyLGBzZo&callback=initMap'
@@ -154,6 +159,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.map)
     return (
       <div className="App">
         <div className="navigation">
@@ -168,6 +174,7 @@ class App extends Component {
               closeInfoWindow={this.closeInfoWindow}
             />
           </div>}
+          {!this.state.map && <div>Map is failed to load</div>}
           <div className="map" id="map"></div>
         </div>
       </div>
