@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
 class Location extends Component {
-  clicked() {
-    console.log('click is working')
+  // make marker clicked
+  open = () => {
+    window.google.maps.event.trigger(this.props.location.marker,'click');
   }
 
   render() {
@@ -10,7 +11,7 @@ class Location extends Component {
 
     return (
       <li className="list-item"
-          onClick={this.clicked}>
+          onClick={() => this.open(location)}>
         {location.name}
       </li>
     )
