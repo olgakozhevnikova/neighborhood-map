@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 
 class Location extends Component {
+  state = {
+    showDetails: false
+  }
   // make marker clicked
   open = () => {
     window.google.maps.event.trigger(this.props.location.marker,'click');
+    this.setState({ showDetails: !this.state.showDetails })
   }
 
   render() {
@@ -13,6 +17,9 @@ class Location extends Component {
       <li className="list-item"
           onClick={() => this.open(location)}>
         {location.name}
+        {this.state.showDetails && <div>
+          <p>{location.address}</p>
+        </div>}
       </li>
     )
   }
