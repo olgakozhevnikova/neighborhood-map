@@ -162,11 +162,11 @@ class App extends Component {
     console.log(this.state.map)
     return (
       <div className="App">
-        <div className="navigation">
+        <div className="navigation" role="navigation">
           <span className="header">Cafes and bars in Bangalore</span>
           <button className="list-btn" onClick={this.toggleList}>Show</button>
         </div>
-        <div className="content">
+        <div className="content" role="sidesection">
           {this.state.visible && <div className="sidebar">
             <Sidebar 
               locations={this.state.locations}
@@ -174,8 +174,7 @@ class App extends Component {
               closeInfoWindow={this.closeInfoWindow}
             />
           </div>}
-          {!this.state.map && <div>Map is failed to load</div>}
-          <div className="map" id="map"></div>
+          <div className="map" id="map" role="main"></div>
         </div>
       </div>
     );

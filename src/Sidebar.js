@@ -38,6 +38,7 @@ class Sidebar extends Component {
       <div className="sidebar-content">
         <div className="search-place-wrapper">
           <input
+            role="textbox"
             className="search-input"
             type="text"
             placeholder="Search by name"
@@ -48,7 +49,7 @@ class Sidebar extends Component {
           </button>
         </div>
         <div className="list-wrapper">
-          <ul>
+          <ul role="list">
             {this.state.locations.map((location, index) => (
               <Location 
                 key={index}
