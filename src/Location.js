@@ -28,9 +28,9 @@ class Location extends Component {
 
     return (
       <li className="list-item"
-          onClick={() => this.open}
+          onClick={this.handleKeyUp}
           onKeyUp={this.handleKeyUp}
-          tabindex="0">
+          tabIndex="0">
         {location.name}
         {this.state.showDetails && <div>
           <p>{location.address}</p>
