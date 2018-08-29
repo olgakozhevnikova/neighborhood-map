@@ -38,7 +38,8 @@ class Sidebar extends Component {
       <div className="sidebar-content">
         <div className="search-place-wrapper">
           <input
-            role="searchinputfield"
+            role="search"
+            aria-labelledby="filter"
             className="search-input"
             type="text"
             placeholder="Search by name"

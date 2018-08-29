@@ -14,7 +14,7 @@ class Location extends Component {
     if (el.keyCode === 13) {
       this.setState({ showDetails: !this.state.showDetails })
     }
-    window.google.maps.event.trigger(this.props.location.marker,'click');
+    window.google.maps.event.trigger(this.props.location.marker, 'click');
   }
 
   render() {
@@ -22,6 +22,7 @@ class Location extends Component {
 
     return (
       <li className="list-item"
+          role="button"
           onClick={this.handleKeyUp}
           onKeyUp={this.handleKeyUp}
           tabIndex="0">

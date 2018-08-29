@@ -161,12 +161,12 @@ class App extends Component {
   render() {
     console.log(this.state.map)
     return (
-      <div className="App">
+      <div className="App" role="main">
         <div className="navigation" role="navigation">
           <span className="header">Cafes and bars in Bangalore</span>
-          <button className="list-btn" onClick={this.toggleList}>Show</button>
+          <button className="list-btn" role="button" onClick={this.toggleList}>Show</button>
         </div>
-        <div className="content" role="sidesection">
+        <div className="content">
           {this.state.visible && <div className="sidebar">
             <Sidebar 
               locations={this.state.locations}
@@ -174,7 +174,7 @@ class App extends Component {
               closeInfoWindow={this.closeInfoWindow}
             />
           </div>}
-          <div className="map" id="map" role="main"></div>
+          <div className="map" id="map" role="application" aria-label="Bangalore Neighborhood"></div>
         </div>
       </div>
     );
