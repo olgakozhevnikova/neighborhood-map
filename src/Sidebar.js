@@ -36,7 +36,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="sidebar-content">
-        <div className="search-place-wrapper">
+        <div className="search-place-wrapper" id="filter">
           <input
             role="search"
             aria-labelledby="filter"
